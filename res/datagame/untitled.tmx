@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="12" tilewidth="64" tileheight="64" nextobjectid="1">
+ <tileset firstgid="1" name="towerDefense_tilesheet" tilewidth="64" tileheight="64">
+  <image source="../../../Downloads/TowerDefense/AssetsKit_2/Tilesheet/towerDefense_tilesheet.png" width="1472" height="832"/>
+ </tileset>
+ <tileset firstgid="300" name="1" tilewidth="120" tileheight="34">
+  <image source="../../../Downloads/TowerDefense/AssetsKit_1/buttons/DefineButton2_83/1.png" width="121" height="34"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="30" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxbzMDAsBiIJWmEcYHFA2SvMRKOQ8LI4sSYb4wDE7I3Dgumh7309i+u+MVlLy7zcakftZd4e4kxn9z8i273YLZ3MRYsicYn1V58mBT1uAAACZo5qA==
+  </data>
+ </layer>
+ <layer name="Boton" width="30" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAtWIgD0xqM2jtq76i9o/YOdXsBRCktSQ==
+  </data>
+ </layer>
+</map>
