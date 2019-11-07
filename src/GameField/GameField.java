@@ -14,6 +14,7 @@ public class GameField extends JPanel implements Runnable {
     boolean running = true;
     private int fps = 0;
     public int scene = 0;
+    int a=0;
 
     public GameField(GameStage gameStage) {
         this.gameStage = gameStage;
@@ -36,7 +37,7 @@ public class GameField extends JPanel implements Runnable {
                 lastFrame = System.currentTimeMillis();
             }
             try {
-                Thread.sleep(frames);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -46,8 +47,25 @@ public class GameField extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
         g.clearRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
-        g.setColor(Color.BLUE);
-        g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
+
+        System.out.println(a);
+        switch (scene) {
+            case 0:
+                g.setColor(Color.BLUE);
+                g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
+                break;
+            case 1:
+                g.setColor(Color.BLUE);
+                g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
+                Toolkit t = Toolkit.getDefaultToolkit();
+                a=a+1;
+                Image image=t.getImage("C:/Users/natri/Downloads/TowerDefense/AssetsKit_2/PNG/Default size/towerDefense_tile270.png");
+                g.drawImage(image,a,a,this);
+                break;
+            default:
+
+        }
+
     }
 
     public void loadGame() {
@@ -62,7 +80,7 @@ public class GameField extends JPanel implements Runnable {
     }
 
     public class KeyTyped {
-        public void keyESC() {
+        public void keyESC() {  
             running = false;
         }
 

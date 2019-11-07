@@ -1,5 +1,7 @@
 package GameEntity;
 
+import java.awt.*;
+
 public abstract class GameEntity {
     int x_pos;
     int y_pos;
@@ -29,5 +31,5 @@ public abstract class GameEntity {
         this.y_pos = y_pos;
     }
 
-    public abstract void draw();
+    public abstract void draw(Graphics g);
 }
