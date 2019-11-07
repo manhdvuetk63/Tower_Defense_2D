@@ -16,7 +16,7 @@ public class GameStage extends JFrame {
     public GameStage() throws HeadlessException {
         new JFrame();
         this.setTitle("Tower Defense ");
-        this.setSize(WIDTH_SCREEN, HEIGHT_SCREEN);
+        this.setSize(32*30, 32*16);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);

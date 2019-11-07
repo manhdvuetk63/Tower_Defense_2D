@@ -1,6 +1,7 @@
 package GameField;
 
 import Controller.KeyHandler;
+import GameEntity.Map;
 import GameStage.GameStage;
 import Player.User;
 
@@ -11,6 +12,7 @@ public class GameField extends JPanel implements Runnable {
     Thread thread = new Thread(this);
     GameStage gameStage;
     User user;
+    Map mapgame;
     boolean running = true;
     private int fps = 0;
     public int scene = 0;
@@ -19,6 +21,7 @@ public class GameField extends JPanel implements Runnable {
     public GameField(GameStage gameStage) {
         this.gameStage = gameStage;
         this.gameStage.addKeyListener(new KeyHandler(this));
+        mapgame =new Map();
         this.thread.start();
     }
 
@@ -37,7 +40,7 @@ public class GameField extends JPanel implements Runnable {
                 lastFrame = System.currentTimeMillis();
             }
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -55,12 +58,8 @@ public class GameField extends JPanel implements Runnable {
                 g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
                 break;
             case 1:
-                g.setColor(Color.BLUE);
                 g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
-                Toolkit t = Toolkit.getDefaultToolkit();
-                a=a+1;
-                Image image=t.getImage("C:/Users/natri/Downloads/TowerDefense/AssetsKit_2/PNG/Default size/towerDefense_tile270.png");
-                g.drawImage(image,a,a,this);
+                mapgame.Draw(g,this);
                 break;
             default:
 
