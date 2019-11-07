@@ -1,8 +1,13 @@
 package GameField;
 
 import Controller.KeyHandler;
-import GameEntity.Map;
+
+import GameEntity.EnemyType.Enemy;
+import GameEntity.EnemyType.ListEnemy;
+import GameEntity.EnemyType.SmallerEnemy;
 import GameStage.GameStage;
+import Map.Map;
+import Map.Road;
 import Player.User;
 
 import javax.swing.*;
@@ -13,15 +18,18 @@ public class GameField extends JPanel implements Runnable {
     GameStage gameStage;
     User user;
     Map mapgame;
+    Road road;
+    ListEnemy listEnemy;
     boolean running = true;
     private int fps = 0;
     public int scene = 0;
     int a=0;
-
     public GameField(GameStage gameStage) {
         this.gameStage = gameStage;
         this.gameStage.addKeyListener(new KeyHandler(this));
         mapgame =new Map();
+        road=new Road();
+        listEnemy=new ListEnemy();
         this.thread.start();
     }
 
@@ -40,7 +48,7 @@ public class GameField extends JPanel implements Runnable {
                 lastFrame = System.currentTimeMillis();
             }
             try {
-                Thread.sleep(500);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -60,6 +68,13 @@ public class GameField extends JPanel implements Runnable {
             case 1:
                 g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
                 mapgame.Draw(g,this);
+                if (listEnemy.isNewEnermy()) {
+                    listEnemy.addEnemy(new SmallerEnemy());
+                }
+                if (!listEnemy.enemyList.isEmpty()) {
+                    listEnemy.Draw(g,this);
+                    listEnemy.delete();
+                }
                 break;
             default:
 

@@ -1,10 +1,11 @@
 package GameEntity.EnemyType;
 
+import GameField.GameField;
+
 import java.awt.*;
 
 public class NormalEnemy extends Enemy {
     String name="Normal.png";
-
     public NormalEnemy() {
         super(100, 100, 100, 100);
         setName_Entity(name);
@@ -19,6 +20,11 @@ public class NormalEnemy extends Enemy {
 
     @Override
     public void move() {
+
+    }
+
+    @Override
+    public void draw(Graphics g, GameField gameField) {
 
     }
 }

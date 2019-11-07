@@ -1,5 +1,7 @@
 package GameEntity.TowerType;
 
+import GameField.GameField;
+
 import java.awt.*;
 
 public class MachineGunTower extends Tower {
@@ -14,6 +16,11 @@ public class MachineGunTower extends Tower {
         Toolkit t=Toolkit.getDefaultToolkit();
         Image img= t.getImage("res/"+this.getName_Entity());
         g.drawImage(img,getX_pos(),getY_pos(),null);
+
+    }
+
+    @Override
+    public void draw(Graphics g, GameField gameField) {
 
     }
 }

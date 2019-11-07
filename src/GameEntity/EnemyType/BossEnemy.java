@@ -1,5 +1,7 @@
 package GameEntity.EnemyType;
 
+import GameField.GameField;
+
 import java.awt.*;
 
 public class BossEnemy extends Enemy {
@@ -17,6 +19,11 @@ public class BossEnemy extends Enemy {
 
     @Override
     public void move() {
+
+    }
+
+    @Override
+    public void draw(Graphics g, GameField gameField) {
 
     }
 }

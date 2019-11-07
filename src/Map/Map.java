@@ -1,4 +1,4 @@
-package GameEntity;
+package Map;
 
 import GameField.GameField;
 
@@ -31,7 +31,6 @@ public class Map {
             for (int j = 0; j < 30; j++) {
                 Image image = t.getImage("res/img/"+map[i][j] + ".jpg");
                 g.drawImage(image, j *32 , i * 32 ,drawPanel);
-                System.out.print(map[i][j] + " ");
             }
             System.out.println();
         }

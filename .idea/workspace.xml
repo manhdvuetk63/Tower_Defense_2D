@@ -2,20 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8b386d2-30eb-42dc-b1cd-30fea41249db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/res/img/0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/img/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/img/161.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/img/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/img/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/img/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/img/map.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/img/Smaller.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Map/Road.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/Bullet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/BossEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/BossEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/Enemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/ListEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/ListEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/NormalEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/NormalEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/SmallerEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/SmallerEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/TankerEnemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/EnemyType/TankerEnemy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/GameEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/GameEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/Map.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/TowerType/MachineGunTower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/TowerType/MachineGunTower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/TowerType/NormalTower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/TowerType/NormalTower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/TowerType/SniperTower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameEntity/TowerType/SniperTower.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameField/GameField$KeyTyped.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameField/GameField$KeyTyped.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameField/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameField/GameField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/img/161.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/img/25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/img/51.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameEntity/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameStage/GameStage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tower_Defense_2D/GameStage/GameStage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/EnemyType/BossEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/EnemyType/BossEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/EnemyType/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/EnemyType/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/EnemyType/ListEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/EnemyType/ListEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/EnemyType/NormalEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/EnemyType/NormalEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/EnemyType/SmallerEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/EnemyType/SmallerEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/EnemyType/TankerEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/EnemyType/TankerEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/GameEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/TowerType/MachineGunTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/TowerType/MachineGunTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/TowerType/NormalTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/TowerType/NormalTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameEntity/TowerType/SniperTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameEntity/TowerType/SniperTower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameField/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameField/GameField.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +62,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/TowerDefense" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -114,7 +130,8 @@
       <updated>1572526698725</updated>
       <workItem from="1572874824443" duration="1587000" />
       <workItem from="1572932691479" duration="6956000" />
-      <workItem from="1573118040907" duration="3561000" />
+      <workItem from="1573118040907" duration="9326000" />
+      <workItem from="1573136302026" duration="3090000" />
     </task>
     <servers />
   </component>
@@ -138,7 +155,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tower_Defense_2D$GameStage.ic" NAME="GameStage Coverage Results" MODIFIED="1573060603127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Tower_Defense_2D$GameStage.ic" NAME="GameStage Coverage Results" MODIFIED="1573142563496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>GameStage.*</FILTER>
     </SUITE>
   </component>
