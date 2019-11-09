@@ -6,11 +6,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class ListEnemy {
     public List<Enemy> enemyList=new ArrayList<>();
     int timeBorn=1;
     int amount=20;
+    int type_Ememy;
     public void addEnemy(Enemy enemy){
         enemyList.add(enemy);
     }
@@ -35,5 +37,38 @@ public class ListEnemy {
         for (Enemy enemy:this.enemyList){
             enemy.draw(g,gameField);
         }
+    }
+    public Enemy ramdomEnemy(){
+        Random random=new Random();
+        setType_Ememy(random.nextInt(4));
+        if(getType_Ememy()==0) return new SmallerEnemy();
+        else if(getType_Ememy()==1) return new NormalEnemy();
+        else if (getType_Ememy()==2) return new BossEnemy();
+        else if (getType_Ememy()==3) return new TankerEnemy();
+        return null;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public int getTimeBorn() {
+        return timeBorn;
+    }
+
+    public void setTimeBorn(int timeBorn) {
+        this.timeBorn = timeBorn;
+    }
+
+    public void setType_Ememy(int type_Ememy) {
+        this.type_Ememy = type_Ememy;
+    }
+
+    public int getType_Ememy() {
+        return type_Ememy;
     }
 }

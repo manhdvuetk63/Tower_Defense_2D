@@ -26,8 +26,6 @@ public class KeyHandler implements KeyListener {
         if(keycode==32){
             this.KeyType.keySpace();
         }
-
-
     }
     public void keyReleased(KeyEvent keyEvent) {
 

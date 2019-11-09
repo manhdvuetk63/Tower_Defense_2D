@@ -1,5 +1,6 @@
 package GameEntity.TowerType;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,5 +13,8 @@ public class ListTower {
     }
     public void sellTower(int i){
         listTowers.remove(i);
+    }
+    public Tower createTower(){
+        return new NormalTower();
     }
 }

@@ -5,6 +5,8 @@ import Controller.KeyHandler;
 import GameEntity.EnemyType.Enemy;
 import GameEntity.EnemyType.ListEnemy;
 import GameEntity.EnemyType.SmallerEnemy;
+import GameEntity.TowerType.ListTower;
+import GameEntity.TowerType.NormalTower;
 import GameStage.GameStage;
 import Map.Map;
 import Map.Road;
@@ -20,6 +22,7 @@ public class GameField extends JPanel implements Runnable {
     Map mapgame;
     Road road;
     ListEnemy listEnemy;
+    ListTower listTower;
     boolean running = true;
     private int fps = 0;
     public int scene = 0;
@@ -29,6 +32,7 @@ public class GameField extends JPanel implements Runnable {
         this.gameStage.addKeyListener(new KeyHandler(this));
         mapgame =new Map();
         road=new Road();
+        listTower=new ListTower();
         listEnemy=new ListEnemy();
         this.thread.start();
     }
@@ -48,7 +52,7 @@ public class GameField extends JPanel implements Runnable {
                 lastFrame = System.currentTimeMillis();
             }
             try {
-                Thread.sleep(10);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -68,8 +72,9 @@ public class GameField extends JPanel implements Runnable {
             case 1:
                 g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
                 mapgame.Draw(g,this);
+                new NormalTower().draw(g,this);
                 if (listEnemy.isNewEnermy()) {
-                    listEnemy.addEnemy(new SmallerEnemy());
+                    listEnemy.addEnemy(listEnemy.ramdomEnemy());
                 }
                 if (!listEnemy.enemyList.isEmpty()) {
                     listEnemy.Draw(g,this);

@@ -1,6 +1,7 @@
 package GameEntity.EnemyType;
 
 import GameEntity.GameEntity;
+import GameField.GameField;
 import Map.Road;
 
 import java.awt.*;
@@ -68,8 +69,22 @@ public abstract class Enemy extends GameEntity implements Comparable<Enemy> {
         return String.valueOf(this.getX_pos()).compareTo(String.valueOf(o.getX_pos()));
     }
 
-    public abstract void move();
-
+    public void move(){
+        switch (stt){
+            case RIGHT:
+                setX_pos(getX_pos()+getSpeed());
+                break;
+            case LEFT:
+                setX_pos(getX_pos()-getSpeed());
+                break;
+            case DOWN:
+                setY_pos(getY_pos()+getSpeed());
+                break;
+            case UP:
+                setY_pos(getY_pos()-getSpeed());
+                break;
+        }
+    }
     public void updateStatus() {
         Point point = new Point(getX_pos(), getY_pos());
         if (point.equals(road.getListPoint()[1])) stt = DOWN;
@@ -79,6 +94,13 @@ public abstract class Enemy extends GameEntity implements Comparable<Enemy> {
         else if (point.equals(road.getListPoint()[5])) {
             setHP(0);
         }
+    }
+    public void draw(Graphics g, GameField gameField) {
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Image img = t.getImage("res/img/" + this.getName_Entity());
+        g.drawImage(img, getX_pos(), getY_pos(), gameField);
+        updateStatus();
+        move();
 
     }
 }

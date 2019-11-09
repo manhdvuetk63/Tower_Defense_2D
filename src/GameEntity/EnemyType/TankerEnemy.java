@@ -7,23 +7,10 @@ import java.awt.*;
 public class TankerEnemy extends Enemy {
 
     public TankerEnemy() {
-        super(200, 80, 200, 200);
+        super(200, 1, 200, 200);
         setName_Entity("Tanker.png");
-    }
-    public void draw(Graphics g) {
-        Toolkit t=Toolkit.getDefaultToolkit();
-        Image img= t.getImage("res/"+this.getName_Entity());
-        g.drawImage(img,getX_pos(),getY_pos(),null);
-
-    }
-
-    @Override
-    public void move() {
-
-    }
-
-    @Override
-    public void draw(Graphics g, GameField gameField) {
-
+        stt = RIGHT;
+        setY_pos(road.getListPoint()[0].y);
+        setX_pos(road.getListPoint()[0].x);
     }
 }
