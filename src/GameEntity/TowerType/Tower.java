@@ -1,14 +1,17 @@
 package GameEntity.TowerType;
 
-import GameEntity.GameTile;
+import GameEntity.GameEntity;
 import GameField.GameField;
 
 import java.awt.*;
 
-public abstract class Tower extends GameTile {
-    Point pos;
-    public Tower(int cost, int speed, int range, int damage) {
-        super(cost, speed, range, damage);
+public abstract class Tower extends GameEntity {
+    int cost,speed,range,damege;
+    public Tower(int cost, int speed, int range, int damege) {
+        this.cost = cost;
+        this.speed = speed;
+        this.range = range;
+        this.damege = damege;
     }
 
     @Override
@@ -17,13 +20,4 @@ public abstract class Tower extends GameTile {
         Image img= t.getImage("res/img/"+this.getName_Entity());
         g.drawImage(img,getX_pos(),getY_pos(),null);
     }
-
-    public void setPos(Point pos) {
-        this.pos = pos;
-    }
-
-    public Point getPos() {
-        return pos;
-    }
-
 }

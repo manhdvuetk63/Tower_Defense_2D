@@ -7,20 +7,11 @@ import java.awt.*;
 public class MachineGunTower extends Tower {
 
 
-    public MachineGunTower() {
+    public MachineGunTower(int x,int y) {
         super(100,200,64,50);
         setName_Entity("Machine.png");
+        setX_pos(x);
+        setY_pos(y);
     }
 
-    public void draw(Graphics g) {
-        Toolkit t=Toolkit.getDefaultToolkit();
-        Image img= t.getImage("res/"+this.getName_Entity());
-        g.drawImage(img,getX_pos(),getY_pos(),null);
-
-    }
-
-    @Override
-    public void draw(Graphics g, GameField gameField) {
-
-    }
 }

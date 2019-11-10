@@ -17,12 +17,6 @@ public abstract class Enemy extends GameEntity implements Comparable<Enemy> {
     public static final int DOWN = 3;
     public static final int UP = 4;
     Road road = new Road();
-
-    public Enemy() {
-        setX_pos(road.getListPoint()[0].x);
-        setY_pos(road.getListPoint()[0].y);
-    }
-
     public int getHP() {
         return HP;
     }
@@ -61,6 +55,8 @@ public abstract class Enemy extends GameEntity implements Comparable<Enemy> {
         this.speed = speed;
         this.def = def;
         this.coin = coin;
+        setX_pos(road.getListPoint()[0].x);
+        setY_pos(road.getListPoint()[0].y);
     }
 
     @Override

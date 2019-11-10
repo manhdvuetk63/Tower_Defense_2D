@@ -6,10 +6,8 @@ import java.awt.*;
 
 public class BossEnemy extends Enemy {
     public BossEnemy() {
-        super(500, 1,100,1000);
+        super(100,1,100,500);
         setName_Entity("Boss.png");
         stt = RIGHT;
-        setY_pos(road.getListPoint()[0].y);
-        setX_pos(road.getListPoint()[0].x);
     }
 }

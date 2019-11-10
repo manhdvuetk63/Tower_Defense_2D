@@ -19,7 +19,6 @@ public class KeyHandler implements KeyListener {
     }
     public void keyPressed(KeyEvent keyEvent) {
         int keycode=keyEvent.getKeyCode();
-        System.out.println(keycode);
         if(keycode==27) {
             this.KeyType.keyESC();
         }
