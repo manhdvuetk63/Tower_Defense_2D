@@ -1,5 +1,6 @@
-package GameEntity;
+package GameEntity.TowerType;
 
+import GameEntity.GameEntity;
 import GameEntity.TowerType.Tower;
 import GameField.GameField;
 
@@ -32,7 +33,7 @@ public class Bullet extends GameEntity {
     }
 
     @Override
-    public void draw(Graphics g, GameField gameField) {
+    public void draw(Graphics2D g, GameField gameField) {
 
     }
 }

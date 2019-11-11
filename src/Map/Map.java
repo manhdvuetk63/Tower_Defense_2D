@@ -42,7 +42,7 @@ public class Map {
             for (int j = 0; j < 30; j++) {
                 Image image = t.getImage("res/img/" + map[i][j] + ".jpg");
                 g.drawImage(image, j * 32, i * 32, drawPanel);
-                g.drawRect(j * 32, i * 32, 32, 32);
+                //g.drawRect(j * 32, i * 32, 32, 32);
             }
         }
     }

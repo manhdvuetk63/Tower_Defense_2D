@@ -7,6 +7,7 @@ import java.awt.*;
 public abstract class GameEntity {
     int x_pos;
     int y_pos;
+    public Point point;
     String name_Entity;
     public String getName_Entity() {
         return name_Entity;
@@ -32,6 +33,13 @@ public abstract class GameEntity {
     public void setY_pos(int y_pos) {
         this.y_pos = y_pos;
     }
+    public void getPoint(){
+        point=new Point(getX_pos()+16,getY_pos()+16);
+    }
+    public double range(Point p){
+        double a=Math.sqrt((p.getX()-point.getX())*(p.getX()-point.getX())+(point.getY()-p.getY())*(point.getY()-p.getY()));
+        return a;
+    }
 
-    public abstract void draw(Graphics g, GameField gameField);
+    public abstract void draw(Graphics2D g, GameField gameField);
 }

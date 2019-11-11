@@ -5,6 +5,7 @@ import GameField.GameField;
 import Map.Road;
 
 import java.awt.*;
+import java.util.Random;
 
 public abstract class Enemy extends GameEntity implements Comparable<Enemy> {
     int HP;
@@ -91,10 +92,16 @@ public abstract class Enemy extends GameEntity implements Comparable<Enemy> {
             setHP(0);
         }
     }
-    public void draw(Graphics g, GameField gameField) {
+    public void draw(Graphics2D g, GameField gameField) {
+        getPoint();
         Toolkit t = Toolkit.getDefaultToolkit();
         Image img = t.getImage("res/img/" + this.getName_Entity());
         g.drawImage(img, getX_pos(), getY_pos(), gameField);
+//        Random random=new Random();
+//        Color color;
+//        color = new Color(random.nextInt(),random.nextInt(),random.nextInt());
+//        g.setColor(color);
+        g.drawString(String.valueOf(HP),getX_pos(),getY_pos());
         updateStatus();
         move();
 

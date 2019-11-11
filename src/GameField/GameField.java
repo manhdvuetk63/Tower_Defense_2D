@@ -26,6 +26,8 @@ public class GameField extends JPanel implements Runnable {
     Road road;
     ListEnemy listEnemy;
     ListTower listTower;
+    JButton button;
+    JComponent component;
     public boolean running = true;
     private int fps = 0;
     public int scene = 0;
@@ -41,6 +43,7 @@ public class GameField extends JPanel implements Runnable {
         road = new Road();
         listTower = new ListTower();
         listEnemy = new ListEnemy();
+        button=new JButton();
         this.thread.start();
     }
 
@@ -67,12 +70,14 @@ public class GameField extends JPanel implements Runnable {
         System.exit(0);
     }
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g2) {
+        Graphics2D g = (Graphics2D) g2.create();
         g.clearRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
         switch (scene) {
             case 0:
                 g.setColor(Color.BLUE);
                 g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
+                button.
                 break;
             case 1:
                 g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
@@ -86,6 +91,7 @@ public class GameField extends JPanel implements Runnable {
                     listEnemy.Draw(g, this);
                     listEnemy.delete();
                 }
+                listTower.fire(listEnemy.enemyList, g);
                 break;
             default:
 
@@ -118,41 +124,42 @@ public class GameField extends JPanel implements Runnable {
         boolean mouseDown = false;
 
         public void mouseDown(java.awt.event.MouseEvent e) {
-            mouseDown=true;
-            if(hand!=0){
+            mouseDown = true;
+            if (hand != 0) {
                 if (mapgame.HereCanBuild[y_pos][x_pos]) {
                     listTower.add(x_pos, y_pos);
                 }
-                hand=0;
+                hand = 0;
             }
             mouseUpdate(e);
 
 
         }
-        public void mouseUpdate(java.awt.event.MouseEvent e){
-            System.out.println(x_pos+" "+y_pos);
+
+        public void mouseUpdate(java.awt.event.MouseEvent e) {
+            System.out.println(x_pos + " " + y_pos);
 
             if (scene == 1) {
-                if (mouseDown&& hand == 0) {
+                if (mouseDown && hand == 0) {
                     if (x_pos == 26 && y_pos == 1) {
                         listTower.setTypeTower(ListTower.NORMAL);
                         System.out.println("ok1");
-                        hand=1;
+                        hand = 1;
                     } else if (x_pos == 26 && y_pos == 3) {
                         listTower.setTypeTower(ListTower.MACHINE);
                         System.out.println("ok2");
-                        hand=1;
+                        hand = 1;
                     } else if (x_pos == 26 && y_pos == 5) {
                         listTower.setTypeTower(ListTower.SNIPER);
                         System.out.println("ok3");
-                        hand=1;
+                        hand = 1;
                     }
                 }
             }
         }
 
         public void mouseMoved(java.awt.event.MouseEvent e) {
-            x_pos = e.getX ()/ 32;
+            x_pos = e.getX() / 32;
             y_pos = e.getY() / 32 - 1;
         }
 

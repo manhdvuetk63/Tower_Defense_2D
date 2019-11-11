@@ -14,7 +14,7 @@ public class Road {
         listPoint[2]=new Point(256,320);
         listPoint[3]=new Point(576,320);
         listPoint[4]=new Point(576,224);
-        listPoint[5]=new Point(768,224);
+        listPoint[5]=new Point(768-32,224);
     }
     public void Draw(Graphics g){
         for (Point p:listPoint){

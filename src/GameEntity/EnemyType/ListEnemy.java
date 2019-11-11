@@ -11,7 +11,7 @@ import java.util.Random;
 public class ListEnemy {
     public List<Enemy> enemyList=new ArrayList<>();
     int timeBorn=1;
-    int amount=20;
+    int amount=40;
     int type_Ememy;
     public void addEnemy(Enemy enemy){
         enemyList.add(enemy);
@@ -26,14 +26,14 @@ public class ListEnemy {
     }
     public boolean isNewEnermy(){
         if(timeBorn--==0&&amount>0){
-            timeBorn=120;
+            timeBorn=100;
             amount--;
             return true;
         }
         return false;
     }
 
-    public void Draw(Graphics g, GameField gameField) {
+    public void Draw(Graphics2D g, GameField gameField) {
         for (Enemy enemy:this.enemyList){
             enemy.draw(g,gameField);
         }
