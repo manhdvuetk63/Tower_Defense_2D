@@ -14,6 +14,7 @@ import Map.Road;
 import Player.User;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -26,10 +27,8 @@ public class GameField extends JPanel implements Runnable {
     Road road;
     ListEnemy listEnemy;
     ListTower listTower;
-    JButton button;
-    JComponent component;
     public boolean running = true;
-    private int fps = 0;
+    int fps = 0;
     public int scene = 0;
     int hand = 0;
     int x_pos, y_pos;
@@ -42,8 +41,8 @@ public class GameField extends JPanel implements Runnable {
         mapgame = new Map();
         road = new Road();
         listTower = new ListTower();
+        listTower.createTower(this);
         listEnemy = new ListEnemy();
-        button=new JButton();
         this.thread.start();
     }
 
@@ -56,11 +55,6 @@ public class GameField extends JPanel implements Runnable {
         while (running) {
             repaint();
             frames++;
-            if (System.currentTimeMillis() - 1000 >= lastFrame) {
-                fps = frames;
-                frames = 0;
-                lastFrame = System.currentTimeMillis();
-            }
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {
@@ -77,21 +71,19 @@ public class GameField extends JPanel implements Runnable {
             case 0:
                 g.setColor(Color.BLUE);
                 g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
-                button.
                 break;
             case 1:
-                g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
                 mapgame.Draw(g, this);
-                listTower.createTower(g, this);
                 listTower.drawTower(g, this);
                 if (listEnemy.isNewEnermy()) {
                     listEnemy.addEnemy(listEnemy.ramdomEnemy());
                 }
                 if (!listEnemy.enemyList.isEmpty()) {
                     listEnemy.Draw(g, this);
-                    listEnemy.delete();
+                    listEnemy.delete(user);
                 }
                 listTower.fire(listEnemy.enemyList, g);
+                g.drawString(user.toString(), 32 * 25, 32 * 10);
                 break;
             default:
 
@@ -127,7 +119,7 @@ public class GameField extends JPanel implements Runnable {
             mouseDown = true;
             if (hand != 0) {
                 if (mapgame.HereCanBuild[y_pos][x_pos]) {
-                    listTower.add(x_pos, y_pos);
+                    listTower.add(x_pos, y_pos, user);
                 }
                 hand = 0;
             }
@@ -141,15 +133,15 @@ public class GameField extends JPanel implements Runnable {
 
             if (scene == 1) {
                 if (mouseDown && hand == 0) {
-                    if (x_pos == 26 && y_pos == 1) {
+                    if (x_pos == 24 && y_pos == 1) {
                         listTower.setTypeTower(ListTower.NORMAL);
                         System.out.println("ok1");
                         hand = 1;
-                    } else if (x_pos == 26 && y_pos == 3) {
+                    } else if (x_pos == 24 && y_pos == 2) {
                         listTower.setTypeTower(ListTower.MACHINE);
                         System.out.println("ok2");
                         hand = 1;
-                    } else if (x_pos == 26 && y_pos == 5) {
+                    } else if (x_pos == 24 && y_pos == 3) {
                         listTower.setTypeTower(ListTower.SNIPER);
                         System.out.println("ok3");
                         hand = 1;

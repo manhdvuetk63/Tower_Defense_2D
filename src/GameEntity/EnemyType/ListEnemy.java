@@ -1,6 +1,7 @@
 package GameEntity.EnemyType;
 
 import GameField.GameField;
+import Player.User;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.Random;
 public class ListEnemy {
     public List<Enemy> enemyList=new ArrayList<>();
     int timeBorn=1;
-    int amount=40;
+    int amount=200;
     int type_Ememy;
     public void addEnemy(Enemy enemy){
         enemyList.add(enemy);
@@ -19,9 +20,12 @@ public class ListEnemy {
     public void sortList(){
         Collections.sort(enemyList);
     }
-    public void delete(){
+    public void delete(User user){
         for (int i=0;i<enemyList.size();i++){
-            if(enemyList.get(i).getHP()<=0)  enemyList.remove(i);
+            if(enemyList.get(i).getHP()<=0) {
+                user.player.money+=enemyList.get(i).coin;
+                enemyList.remove(i);
+            }
         }
     }
     public boolean isNewEnermy(){
@@ -34,6 +38,7 @@ public class ListEnemy {
     }
 
     public void Draw(Graphics2D g, GameField gameField) {
+
         for (Enemy enemy:this.enemyList){
             enemy.draw(g,gameField);
         }

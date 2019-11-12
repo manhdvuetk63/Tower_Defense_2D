@@ -3,6 +3,7 @@ package GameEntity;
 import GameField.GameField;
 
 import java.awt.*;
+import java.io.IOException;
 
 public abstract class GameEntity {
     int x_pos;
@@ -41,5 +42,5 @@ public abstract class GameEntity {
         return a;
     }
 
-    public abstract void draw(Graphics2D g, GameField gameField);
+    public abstract void draw(Graphics2D g, GameField gameField) throws IOException;
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Map {
+    boolean isDraw=false;
 
     String[][] map = new String[15][30];
     public boolean[][] HereCanBuild = new boolean[15][30];
@@ -37,13 +38,14 @@ public class Map {
     }
 
     public void Draw(Graphics g, GameField drawPanel) {
-        Toolkit t = Toolkit.getDefaultToolkit();
-        for (int i = 0; i < 15; i++) {
-            for (int j = 0; j < 30; j++) {
-                Image image = t.getImage("res/img/" + map[i][j] + ".jpg");
-                g.drawImage(image, j * 32, i * 32, drawPanel);
-                //g.drawRect(j * 32, i * 32, 32, 32);
-            }
+            Toolkit t = Toolkit.getDefaultToolkit();
+            for (int i = 0; i < 15; i++) {
+                for (int j = 0; j < 30; j++) {
+                    Image image = t.getImage("res/img/" + map[i][j] + ".jpg");
+                    g.drawImage(image, j * 32, i * 32, drawPanel);
+                    //g.drawRect(j * 32, i * 32, 32, 32);
+                }
+
         }
     }
 }
