@@ -1,8 +1,9 @@
 package GameEntity.TowerType;
 
+import Game.GameField;
 import GameEntity.EnemyType.Enemy;
 import GameEntity.GameEntity;
-import GameField.GameField;
+
 
 import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;

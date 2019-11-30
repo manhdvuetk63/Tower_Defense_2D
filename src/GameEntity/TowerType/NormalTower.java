@@ -1,6 +1,5 @@
 package GameEntity.TowerType;
 
-import GameField.GameField;
 
 import java.awt.*;
 

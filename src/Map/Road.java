@@ -1,7 +1,5 @@
 package Map;
 
-import GameField.GameField;
-
 import java.awt.*;
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package Controller;
 
 
-import GameField.GameField;
-import GameStage.GameStage;
+
+import Game.GameField;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

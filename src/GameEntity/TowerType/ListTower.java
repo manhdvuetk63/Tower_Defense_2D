@@ -1,7 +1,7 @@
 package GameEntity.TowerType;
 
+import Game.GameField;
 import GameEntity.EnemyType.Enemy;
-import GameField.GameField;
 import Player.User;
 
 import java.awt.*;

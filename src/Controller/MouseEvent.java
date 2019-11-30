@@ -1,6 +1,6 @@
 package Controller;
 
-import GameField.GameField;
+import Game.GameField;
 
 import java.awt.event.InputEvent;
 import java.awt.event.MouseListener;

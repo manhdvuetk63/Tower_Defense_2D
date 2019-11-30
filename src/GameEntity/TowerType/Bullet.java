@@ -1,8 +1,8 @@
 package GameEntity.TowerType;
 
+import Game.GameField;
 import GameEntity.GameEntity;
 import GameEntity.TowerType.Tower;
-import GameField.GameField;
 
 import java.awt.*;
 import java.lang.reflect.Array;

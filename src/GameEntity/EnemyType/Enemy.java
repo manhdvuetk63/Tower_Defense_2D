@@ -1,7 +1,7 @@
 package GameEntity.EnemyType;
 
+import Game.GameField;
 import GameEntity.GameEntity;
-import GameField.GameField;
 import Map.Road;
 
 import javax.imageio.ImageIO;
@@ -13,6 +13,7 @@ import java.io.File;
 import java.util.Random;
 
 public class Enemy extends GameEntity implements Comparable<Enemy> {
+    int HP_const;
     int HP;
     int speed;
     int def;
@@ -71,6 +72,7 @@ public class Enemy extends GameEntity implements Comparable<Enemy> {
         this.speed = speed;
         this.def = def;
         this.coin = coin;
+        this.HP_const=HP;
         setX_pos(road.getListPoint()[0].x);
         setY_pos(road.getListPoint()[0].y);
     }
@@ -100,10 +102,22 @@ public class Enemy extends GameEntity implements Comparable<Enemy> {
     public void updateStatus() {
         Point point = new Point(getX_pos(), getY_pos());
 
-        if (point.equals(road.getListPoint()[1])) stt = DOWN;
-        else if (point.equals(road.getListPoint()[2])) stt = RIGHT;
-        else if (point.equals(road.getListPoint()[3])) stt = UP;
-        else if (point.equals(road.getListPoint()[4])) stt=RIGHT;
+        if (point.equals(road.getListPoint()[1])){
+            stt = DOWN;
+            setRotationRequired(90);
+        }
+        else if (point.equals(road.getListPoint()[2])) {
+            stt = RIGHT;
+            setRotationRequired(0);
+        }
+        else if (point.equals(road.getListPoint()[3])){
+            stt = UP;
+            setRotationRequired(-90);
+        }
+        else if (point.equals(road.getListPoint()[4])){
+            stt=RIGHT;
+            setRotationRequired(0);
+        }
         else if (point.equals(road.getListPoint()[5])) {
             setHP(0);
         }
@@ -121,8 +135,15 @@ public class Enemy extends GameEntity implements Comparable<Enemy> {
         getPoint();
         Toolkit t = Toolkit.getDefaultToolkit();
         Image img = t.getImage("res/img/" + this.getName_Entity());
+        g.rotate(Math.toRadians(rotationRequired),getX_pos()+16,getY_pos()+16);
         g.drawImage(img, getX_pos(), getY_pos(), gameField);
-        g.drawString(String.valueOf(HP),getX_pos(),getY_pos());
+        g.rotate(Math.toRadians(-rotationRequired),getX_pos()+16,getY_pos()+16);
+        g.setColor(Color.green);
+        int a=(int) (32*((double)getHP()/HP_const));
+        g.fillRect(getX_pos(),getY_pos(), (int) (32*((double)getHP()/HP_const)),4);
+        g.setColor(Color.red);
+        g.fillRect(getX_pos()+a,getY_pos(),32-a,4);
+        System.out.println(getHP()/HP_const);
         updateStatus();
         move();
     }

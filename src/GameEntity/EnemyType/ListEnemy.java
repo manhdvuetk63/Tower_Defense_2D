@@ -1,6 +1,6 @@
 package GameEntity.EnemyType;
 
-import GameField.GameField;
+import Game.GameField;
 import Player.User;
 
 import java.awt.*;

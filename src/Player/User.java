@@ -1,9 +1,9 @@
 package Player;
 
-
-import GameField.GameField;
+import Game.GameField;
 
 public class User  {
+
     public Player player;
     private GameField screen;
     int startingMoney=1000;

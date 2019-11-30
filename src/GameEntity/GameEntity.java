@@ -1,6 +1,7 @@
 package GameEntity;
 
-import GameField.GameField;
+
+import Game.GameField;
 
 import java.awt.*;
 import java.io.IOException;

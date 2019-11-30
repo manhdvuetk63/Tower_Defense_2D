@@ -1,6 +1,7 @@
 package Map;
 
-import GameField.GameField;
+
+import Game.GameField;
 
 import java.awt.*;
 import java.io.File;
