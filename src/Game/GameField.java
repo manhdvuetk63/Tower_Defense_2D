@@ -1,14 +1,11 @@
 package Game;
 
-import Controller.KeyHandler;
-
 import Controller.MouseEvent;
-import GameEntity.EnemyType.ListEnemy;
-import GameEntity.TowerType.ListTower;
 import Map.Map;
-import Map.Road;
 import Player.User;
 import Load_res.GameSound;
+import State.GameOver;
+import State.StateGame;
 import State.StateMenu;
 
 import javax.swing.*;
@@ -19,30 +16,20 @@ public class GameField extends JPanel implements Runnable {
     Thread thread = new Thread(this);
     GameStage gameStage;
     User user;
-    Map mapgame;
-//    Road road;
-    ListEnemy listEnemy;
-    ListTower listTower;
-    StateMenu stateMenu;
+    public StateMenu stateMenu;
+    public StateGame stateGame;
+    public GameOver gameOver;
     public boolean running = true;
-    int fps = 0;
     public int scene = 0;
-    int hand = 0;
-    int x_pos, y_pos;
-    boolean hasSound=true;
+    boolean hasSound = true;
 
     public GameField(GameStage gameStage) {
         this.sound = new GameSound();
         this.gameStage = gameStage;
-        this.gameStage.addKeyListener(new KeyHandler(this));
         this.gameStage.addMouseListener(new MouseEvent(this));
         this.gameStage.addMouseMotionListener(new MouseEvent(this));
-        mapgame = new Map();
-        //road = new Road();
-        listTower = new ListTower();
-        listTower.createTower(this);
-        listEnemy = new ListEnemy();
-        stateMenu=new StateMenu();
+       // stateMenu = new StateMenu(this);
+
         this.thread.start();
     }
 
@@ -55,7 +42,6 @@ public class GameField extends JPanel implements Runnable {
         while (running) {
             repaint();
             frames++;
-
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {
@@ -64,105 +50,50 @@ public class GameField extends JPanel implements Runnable {
         }
         System.exit(0);
     }
-
     public void paintComponent(Graphics g2) {
         Graphics2D g = (Graphics2D) g2.create();
         g.clearRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
         switch (scene) {
-            case 0:
-                if (hasSound==true)
-                {
-                    hasSound=false;
+            case 0://menu
+                if (hasSound == true) {
+                    hasSound = false;
                     sound.play(sound.intro);
-
+                    loadMenu();
                 }
                 stateMenu.loadMenu(g);
-//                g.setColor(Color.BLUE);
-//                g.fillRect(0, 0, this.gameStage.getWidth(), this.gameStage.getHeight());
                 break;
-            case 1:
-                mapgame.Draw(g, this);
-                listTower.drawTower(g, this);
-                if (listEnemy.isNewEnermy()) {
-                    listEnemy.addEnemy(listEnemy.ramdomEnemy());
+                case 1://gameState
+                stateGame.loadGame(g);
+                if (checkHPofPlayer()==true) {
+                    scene=2;
+                    stateGame=null;
+                    user=null;
+                    gameOver=new GameOver(this);
                 }
-                if (!listEnemy.enemyList.isEmpty()) {
-                    listEnemy.Draw(g, this);
-                    listEnemy.delete(user);
-                }
-                listTower.fire(listEnemy.enemyList, g);
-                g.drawString(user.toString(), 32 * 25, 32 * 10);
+                break;
+            case 2://gameOver
+                gameOver.draw(g);
                 break;
             default:
-
         }
-
     }
-
     public void loadGame() {
         user = new User(this);
         running = true;
     }
-
+    public void loadMenu(){
+        stateMenu = new StateMenu(this);
+    }
+    public void loadOver(){
+        gameOver=new GameOver(this);
+    }
     public void startGame() {
         user.createPlayer();
+        stateGame = new StateGame(this, user);
         this.scene = 1;
-
     }
-
-    public class KeyTyped {
-        public void keyESC() {
-            running = false;
-        }
-
-        public void keySpace() {
-            startGame();
-        }
+    public boolean checkHPofPlayer(){
+        if (user.player.health<=0) return true;
+        return false;
     }
-
-    public class MouseType {
-        boolean mouseDown = false;
-
-        public void mouseDown(java.awt.event.MouseEvent e) {
-            mouseDown = true;
-            if (hand != 0) {
-                if (mapgame.HereCanBuild[y_pos][x_pos]) {
-                    listTower.add(x_pos, y_pos, user);
-                }
-                hand = 0;
-            }
-            mouseUpdate(e);
-
-
-        }
-
-        public void mouseUpdate(java.awt.event.MouseEvent e) {
-            System.out.println(x_pos + " " + y_pos);
-
-            if (scene == 1) {
-                if (mouseDown && hand == 0) {
-                    if (x_pos == 24 && y_pos == 1) {
-                        listTower.setTypeTower(ListTower.NORMAL);
-                        System.out.println("ok1");
-                        hand = 1;
-                    } else if (x_pos == 24 && y_pos == 2) {
-                        listTower.setTypeTower(ListTower.MACHINE);
-                        System.out.println("ok2");
-                        hand = 1;
-                    } else if (x_pos == 24 && y_pos == 3) {
-                        listTower.setTypeTower(ListTower.SNIPER);
-                        System.out.println("ok3");
-                        hand = 1;
-                    }
-                }
-            }
-        }
-
-        public void mouseMoved(java.awt.event.MouseEvent e) {
-            x_pos = e.getX() / 32;
-            y_pos = e.getY() / 32 - 1;
-        }
-
-    }
-
 }

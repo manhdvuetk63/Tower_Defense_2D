@@ -6,6 +6,6 @@ public class Player {
     public int money;
     public Player(User user){
         this.health=user.startingHealth;
-        this.money=user.startingHealth;
+        this.money=user.startingMoney;
     }
 }

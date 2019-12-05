@@ -15,6 +15,7 @@ public class ListTower {
     public static final int MACHINE = 156;
     public static final int SNIPER = 206;
     int typeTower;
+    public int hand = 0;
 
     public void add(int x_pos, int y_pos, User user) {
         Tower t = null;
@@ -29,6 +30,7 @@ public class ListTower {
             listTowersToAttack.add(t);
             user.player.money -= t.cost;
         }
+        else hand=0;
     }
     public void sellTower(int i) {
         listTowersToAttack.remove(i);
@@ -43,6 +45,7 @@ public class ListTower {
     }
 
     public void drawTower(Graphics2D g, GameField gameField) {
+        g.setColor(Color.yellow);
         g.setFont(new Font("NewellsHand",Font.PLAIN,18));
         for (Tower t : listTowersInShop) {
             t.draw(g,gameField);

@@ -26,6 +26,10 @@ public class ListEnemy {
                 user.player.money+=enemyList.get(i).coin;
                 enemyList.remove(i);
             }
+            if (enemyList.get(i).isBleed()){
+                user.player.health-=200;
+                enemyList.remove(i);
+            }
         }
     }
     public boolean isNewEnermy(){

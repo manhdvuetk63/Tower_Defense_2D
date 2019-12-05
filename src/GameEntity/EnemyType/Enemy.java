@@ -21,6 +21,16 @@ public class Enemy extends GameEntity implements Comparable<Enemy> {
     int stt;
     double rotationRequired=0;
 
+    public boolean isBleed() {
+        return bleed;
+    }
+
+    public void setBleed(boolean bleed) {
+        this.bleed = bleed;
+    }
+
+    boolean bleed=false;
+
     public double getRotationRequired() {
         return rotationRequired;
     }
@@ -119,7 +129,7 @@ public class Enemy extends GameEntity implements Comparable<Enemy> {
             setRotationRequired(0);
         }
         else if (point.equals(road.getListPoint()[5])) {
-            setHP(0);
+            setBleed(true);
         }
 //        if(stt==RIGHT){
 //            if(getX_pos()<=road.getListPoint()[1].getX()&& getX_pos()>=road.getListPoint()[1].getX()-64){
@@ -143,7 +153,6 @@ public class Enemy extends GameEntity implements Comparable<Enemy> {
         g.fillRect(getX_pos(),getY_pos(), (int) (32*((double)getHP()/HP_const)),4);
         g.setColor(Color.red);
         g.fillRect(getX_pos()+a,getY_pos(),32-a,4);
-        System.out.println(getHP()/HP_const);
         updateStatus();
         move();
     }
