@@ -82,6 +82,7 @@ public class GameField extends JPanel implements Runnable {
                 }
                 break;
             case 2://gameOver
+                GameSound.play(GameSound.gameOverSound);
                 gameOver.draw(g);
                 break;
             case 3:

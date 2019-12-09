@@ -13,7 +13,7 @@ public class GameSound {
     public final static File fire2 =new File("res/sound/");
     public final static File fire3 =new File("res/sound/");
     public final static File gameSound =new File("res/sound/");
-    public final static File gameOverSound =new File("res/sound/");
+    public final static File gameOverSound =new File("res/sound/xlost.mid");
     public final static File winSound =new File("res/sound/");
     public final static File tick =new File("res/sound/tick.wav");
     public static final File welcome = new File("res/sound/welcome.wav");
