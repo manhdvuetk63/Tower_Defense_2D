@@ -3,6 +3,7 @@ package State;
 
 import Game.GameField;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public abstract class StatesOfGame {
@@ -29,4 +30,11 @@ public abstract class StatesOfGame {
     }
     public abstract void mouseDown(MouseEvent e);
 
+    public abstract void loadMenu(Graphics2D g);
+
+    public abstract void loadGame(Graphics2D g);
+
+    public abstract void draw(Graphics2D g);
+
+    public abstract void mousePressed(MouseEvent e);
 }

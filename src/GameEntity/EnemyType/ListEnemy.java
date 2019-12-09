@@ -4,16 +4,35 @@ import Game.GameField;
 import Player.User;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 
 public class ListEnemy {
     public List<Enemy> enemyList=new ArrayList<>();
-    int timeBorn=1;
-    int amount=200;
+    int timeBorn=300;
+    int count=0;
     int type_Ememy;
+    int[] wave;
+    public int gameRound=1;
+    int getCount=1;
+    int getGetCount=0;
+    boolean nextWave=false;
+    boolean endGame=false;
+    public ListEnemy(){
+        wave=new int[1000];
+        File file=new File("res/datagame/wave.txt");
+        try {
+            Scanner sc=new Scanner(file);
+            for (int i=0;i<1000;i++){
+                wave[i]= Integer.parseInt(sc.next());
+                if (wave[i]==10) break;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     public void addEnemy(Enemy enemy){
         enemyList.add(enemy);
     }
@@ -21,49 +40,61 @@ public class ListEnemy {
         Collections.sort(enemyList);
     }
     public void delete(User user){
-        for (int i=0;i<enemyList.size();i++){
-            if(enemyList.get(i).getHP()<=0) {
-                user.player.money+=enemyList.get(i).coin;
-                enemyList.remove(i);
+        if (!enemyList.isEmpty()) {
+            for (int i = 0; i < enemyList.size(); i++) {
+                if (enemyList.get(i).getHP() <= 0) {
+                    user.player.money += enemyList.get(i).coin;
+                    getCount++;
+                    enemyList.remove(i);
+                }
             }
-            if (enemyList.get(i).isBleed()){
-                user.player.health-=200;
-                enemyList.remove(i);
+        }
+        if (!enemyList.isEmpty()) {
+            for (int i = 0; i < enemyList.size(); i++) {
+                if (enemyList.get(i).isBleed()) {
+                    user.player.health -= 200;
+                    getCount++;
+                    enemyList.remove(i);
+                }
             }
         }
     }
     public boolean isNewEnermy(){
-        if(timeBorn--==0&&amount>0){
+        if(timeBorn--==0){
             timeBorn=100;
-            amount--;
             return true;
         }
         return false;
     }
 
     public void Draw(Graphics2D g, GameField gameField) {
-
+        if (getGetCount==getCount&&nextWave){
+            gameRound++;
+            nextWave=false;
+        }
         for (Enemy enemy:this.enemyList){
-            enemy.draw(g,gameField);
+            enemy.draw(g);
         }
     }
     public Enemy ramdomEnemy(){
-        Random random=new Random();
-        setType_Ememy(random.nextInt(4));
+        setType_Ememy(wave[count++]);
         if(getType_Ememy()==0) return new SmallerEnemy();
         else if(getType_Ememy()==1) return new NormalEnemy();
         else if (getType_Ememy()==2) return new BossEnemy();
         else if (getType_Ememy()==3) return new TankerEnemy();
+        else if (getType_Ememy()==5) {
+            getGetCount=count;
+            nextWave=true;
+            setTimeBorn(1000);
+            return new NormalEnemy();
+        }
+        else if (getType_Ememy()==10){
+            endGame=true;
+            return new BossEnemy();
+        }
         return null;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
 
     public int getTimeBorn() {
         return timeBorn;

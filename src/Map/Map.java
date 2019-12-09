@@ -2,6 +2,7 @@ package Map;
 
 
 import Game.GameField;
+import Load_res.UILoader;
 
 import java.awt.*;
 import java.io.File;
@@ -44,13 +45,26 @@ public class Map {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 30; j++) {
                 Image image = t.getImage("res/img/" + map[i][j] + ".jpg");
-                g.drawImage(image, j * 32, i * 32, drawPanel);
+                g.drawImage(image, j * 32, i * 32,32,32, drawPanel);
 
                 //g.drawRect(j * 32, i * 32, 32, 32);
             }
 
         }
+        Image i1=t.getImage("res/img/116.png");
+        Image i2=t.getImage("res/img/112.png");
+        Image i3=t.getImage("res/img/113.png");
+        Image i4=t.getImage("res/img/111.png");
+        g.drawImage(i1,4*32,8*32,null);
+        g.drawImage(i1,10*32,8*32,32,32,null);
+        g.drawImage(i4,14*32,2*32,32,32,null);
+        g.drawImage(i3,14*32,4*32,32,32,null);
+        g.drawImage(i2,13*32,2*32,null);
+        g.drawImage(UILoader.pauseButton,32*25,13*32,32*2,32,null);
     }
+
+
+
 
     public void DrawRect(Graphics2D g) {
         if(a++%100<50) g.setColor(Color.BLACK);

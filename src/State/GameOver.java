@@ -22,17 +22,30 @@ public class GameOver extends StatesOfGame {
         g2d.drawImage(UILoader.quitButton, 12 * 32, 32 * 11, 32 * 6, 32 * 2, null);
         if (UILoader.isRestartButton) {
             g2d.drawImage(UILoader.restartButtonClick, 12 * 32, 32 * 5, 32 * 6, 32 * 2, null);
+            UILoader.isRestartButton=false;
         }
         if (UILoader.isMenuButton) {
             g2d.drawImage(UILoader.menuButtonClick, 12 * 32, 32 * 8, 32 * 6, 32 * 2, null);
+            UILoader.isMenuButton=false;
         }
         if (UILoader.isQuitButton) {
             g2d.drawImage(UILoader.quitButtonClick, 12 * 32, 32 * 11, 32 * 6, 32 * 2, null);
+            UILoader.isQuitButton=false;
         }
     }
 
     @Override
     public void mouseDown(MouseEvent e) {
+    }
+
+    @Override
+    public void loadMenu(Graphics2D g) {
+
+    }
+
+    @Override
+    public void loadGame(Graphics2D g) {
+
     }
 
     public void mousePressed(MouseEvent e) {

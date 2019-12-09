@@ -4,9 +4,7 @@ import Controller.MouseEvent;
 import Map.Map;
 import Player.User;
 import Load_res.GameSound;
-import State.GameOver;
-import State.StateGame;
-import State.StateMenu;
+import State.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +17,7 @@ public class GameField extends JPanel implements Runnable {
     public StateMenu stateMenu;
     public StateGame stateGame;
     public GameOver gameOver;
+    public PauseState pauseGame;
     public boolean running = true;
     public int scene = 0;
     boolean hasSound = true;
@@ -29,7 +28,7 @@ public class GameField extends JPanel implements Runnable {
         this.gameStage.addMouseListener(new MouseEvent(this));
         this.gameStage.addMouseMotionListener(new MouseEvent(this));
        // stateMenu = new StateMenu(this);
-
+        pauseGame=new PauseState(this);
         this.thread.start();
     }
 
@@ -40,10 +39,11 @@ public class GameField extends JPanel implements Runnable {
         int frames = 0;
         loadGame();
         while (running) {
+           //System.out.println(scene);
             repaint();
             frames++;
             try {
-                Thread.sleep(20);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -57,12 +57,18 @@ public class GameField extends JPanel implements Runnable {
             case 0://menu
                 if (hasSound == true) {
                     hasSound = false;
-                    sound.play(sound.intro);
+                    GameSound.play(GameSound.intro);
                     loadMenu();
                 }
                 stateMenu.loadMenu(g);
                 break;
                 case 1://gameState
+                    if (hasSound == false) {
+                        GameSound.stop();
+                        hasSound = true;
+                        GameSound.play(GameSound.welcome);
+                        loadMenu();
+                    }
                 stateGame.loadGame(g);
                 if (checkHPofPlayer()==true) {
                     scene=2;
@@ -70,9 +76,16 @@ public class GameField extends JPanel implements Runnable {
                     user=null;
                     gameOver=new GameOver(this);
                 }
+                if (stateGame.pause){
+                    scene=3;
+                    stateGame.setPause(false);
+                }
                 break;
             case 2://gameOver
                 gameOver.draw(g);
+                break;
+            case 3:
+                pauseGame.draw(g);
                 break;
             default:
         }

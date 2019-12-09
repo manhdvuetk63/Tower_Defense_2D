@@ -9,11 +9,9 @@ import java.awt.event.MouseMotionListener;
 
 public class MouseEvent implements MouseListener, MouseMotionListener {
     private GameField gameField;
-    //private GameField.MouseType mouseType;
 
     public MouseEvent(GameField gameField) {
         this.gameField = gameField;
-     //   this.mouseType = this.gameField.new MouseType();
     }
 
     @Override
@@ -24,10 +22,12 @@ public class MouseEvent implements MouseListener, MouseMotionListener {
     public void mousePressed(java.awt.event.MouseEvent e) {
         if (this.gameField.scene == 0) {
             this.gameField.stateMenu.setE(e);
-
-        } else if (this.gameField.scene==1){
+        } else if (this.gameField.scene == 1) {
             this.gameField.stateGame.mouseDown(e);
-        } else  this.gameField.gameOver.mousePressed(e);
+        } else if (this.gameField.scene == 3) {
+            this.gameField.pauseGame.mousePressed(e);
+
+        } else this.gameField.gameOver.mousePressed(e);
 
     }
 
@@ -50,18 +50,24 @@ public class MouseEvent implements MouseListener, MouseMotionListener {
     public void mouseDragged(java.awt.event.MouseEvent e) {
         if (this.gameField.scene == 0) {
             this.gameField.stateMenu.setE(e);
-        } else if (this.gameField.scene==1){
+        } else if (this.gameField.scene == 1) {
             this.gameField.stateGame.mouseMoved(e);
-        } else  this.gameField.gameOver.mousePressed(e);
+        } else if (this.gameField.scene == 3) {
+            this.gameField.pauseGame.setE(e);
+
+        } else this.gameField.gameOver.mousePressed(e);
 
     }
 
     @Override
     public void mouseMoved(java.awt.event.MouseEvent e) {
         if (this.gameField.scene == 0) {
-          //  this.gameField.stateMenu.setE(e);
-        } else if (this.gameField.scene==1){
+            //  this.gameField.stateMenu.setE(e);
+        } else if (this.gameField.scene == 1) {
             this.gameField.stateGame.mouseMoved(e);
+        } else if (this.gameField.scene == 3) {
+            // this.gameField.pauseGame.setE(e);
+
         }
         //else this.gameField.gameOver.mousePressed(e);
     }

@@ -3,10 +3,13 @@ package State;
 import Game.GameField;
 import GameEntity.EnemyType.ListEnemy;
 import GameEntity.TowerType.ListTower;
+import Load_res.GameSound;
 import Map.Map;
 import Player.User;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+
 public class StateGame extends StatesOfGame {
     GameField gameField;
     ListEnemy listEnemy;
@@ -15,10 +18,19 @@ public class StateGame extends StatesOfGame {
     int x_pos, y_pos;
     User user;
     Map mapgame;
+    public boolean pause = false;
 
-    public StateGame(GameField gameField,User user) {
+    public boolean isPause() {
+        return pause;
+    }
+
+    public void setPause(boolean pause) {
+        this.pause = pause;
+    }
+
+    public StateGame(GameField gameField, User user) {
         super(gameField);
-        this.user=user;
+        this.user = user;
         mapgame = new Map();
         listTower = new ListTower();
         listTower.createTower(gameField);
@@ -37,9 +49,16 @@ public class StateGame extends StatesOfGame {
         listTower.hand = 0;
         mouseUpdate(e);
     }
-    public void loadGame(Graphics2D g){
+
+    @Override
+    public void loadMenu(Graphics2D g) {
+
+    }
+
+    public void loadGame(Graphics2D g) {
         mapgame.Draw(g, gameField);
-        if (listTower.hand==1) {
+
+        if (listTower.hand == 1) {
             mapgame.DrawRect(g);
         }
         listTower.drawTower(g, gameField);
@@ -51,25 +70,40 @@ public class StateGame extends StatesOfGame {
             listEnemy.delete(user);
         }
         listTower.fire(listEnemy.enemyList, g);
-        g.drawString(user.toString(), 32 * 25, 32 * 10);
+        user.draw(g);
+        String s = "WAVE :" + listEnemy.gameRound + "";
+        g.drawString(s, 25 * 32, 32 * 8);
     }
+
+    @Override
+    public void draw(Graphics2D g) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
     public void mouseUpdate(java.awt.event.MouseEvent e) {
         System.out.println(x_pos + " " + y_pos);
-            if (mouseDown && listTower.hand == 0) {
-                if (x_pos == 24 && y_pos == 1) {
-                    listTower.setTypeTower(ListTower.NORMAL);
-                    listTower.hand = 1;
-                } else if (x_pos == 24 && y_pos == 2) {
-                    listTower.setTypeTower(ListTower.MACHINE);
-                    listTower.hand = 1;
-                } else if (x_pos == 24 && y_pos == 3) {
-                    listTower.setTypeTower(ListTower.SNIPER);
-                    listTower.hand = 1;
-                }
-
+        if (mouseDown && listTower.hand == 0) {
+            if (x_pos == 24 && y_pos == 1) {
+                listTower.setTypeTower(ListTower.NORMAL);
+                listTower.hand = 1;
+            } else if (x_pos == 24 && y_pos == 3) {
+                listTower.setTypeTower(ListTower.MACHINE);
+                listTower.hand = 1;
+            } else if (x_pos == 24 && y_pos == 5) {
+                listTower.setTypeTower(ListTower.SNIPER);
+                listTower.hand = 1;
             }
+            if (x_pos == 25 && y_pos == 13 || (x_pos == 26 && y_pos == 13)) {
+                pause = true;
+            }
+            GameSound.play(GameSound.tick);
         }
-
+    }
 
     public void mouseMoved(java.awt.event.MouseEvent e) {
         x_pos = e.getX() / 32;
@@ -77,3 +111,4 @@ public class StateGame extends StatesOfGame {
     }
 
 }
+
