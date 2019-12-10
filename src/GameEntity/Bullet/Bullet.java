@@ -15,14 +15,16 @@ public class Bullet extends GameEntity {
     private int stt = 0;
     private Tower tower;
     private Shape enemy_pos;
+    boolean aBoolean;
 
     public Bullet(double speed, int damage, int stt, Tower tower) {
         this.speed = speed;
         this.damage = damage;
         this.stt = stt;
         this.tower = tower;
-        this.width = 64;
-        this.height = 64;
+        this.width = 32;
+        this.height = 32;
+        aBoolean=false;
         //setPoint();
     }
 
@@ -79,9 +81,9 @@ public class Bullet extends GameEntity {
     public void draw(Graphics2D g) {
         Toolkit t = Toolkit.getDefaultToolkit();
         Image image = t.getImage(name_Entity);
-        // g.rotate(Math.toRadians(rotationRequired),getPoint().x,getPoint().y);
-        g.drawImage(image, getX_pos(), getY_pos(), 48, 48, null);
-        // g.rotate(Math.toRadians(-rotationRequired),getPoint().x,getPoint().y);
+         g.rotate(rotationRequired,getPoint().x,getPoint().y);
+        g.drawImage(image, getX_pos(), getY_pos(), 32, 32, null);
+         g.rotate(-rotationRequired,getPoint().x,getPoint().y);
         move();
     }
 
@@ -90,20 +92,32 @@ public class Bullet extends GameEntity {
         switch (stt) {
 
             case 1:
-                setX_pos((int) (getX_pos() + 10 * Math.sin(Math.PI - rotationRequired)));
-                setY_pos((int) (getY_pos() + 10 * Math.cos(Math.PI - rotationRequired)));
+                if(!aBoolean){
+                    aBoolean=true;
+                }
+                setX_pos((int) (getX_pos() + 12 * Math.sin(Math.PI - rotationRequired)));
+                setY_pos((int) (getY_pos() + 12 * Math.cos(Math.PI - rotationRequired)));
                 break;
             case 2:
-                setX_pos((int) (getX_pos() + 10 * Math.sin(rotationRequired)));
-                setY_pos((int) (getY_pos() - 10 * Math.cos(rotationRequired)));
+                if(!aBoolean){
+                    aBoolean=true;
+                }
+                setX_pos((int) (getX_pos() + 12 * Math.sin(rotationRequired)));
+                setY_pos((int) (getY_pos() - 12 * Math.cos(rotationRequired)));
                 break;
             case 3:
-                setX_pos((int) (getX_pos() - 10 * Math.sin(rotationRequired - Math.PI)));
-                setY_pos((int) (getY_pos() + 10 * Math.cos(rotationRequired - Math.PI)));
+                if(!aBoolean){
+                    aBoolean=true;
+                }
+                setX_pos((int) (getX_pos() - 12 * Math.sin(rotationRequired - Math.PI)));
+                setY_pos((int) (getY_pos() + 12 * Math.cos(rotationRequired - Math.PI)));
                 break;
             case 4:
-                setX_pos((int) (getX_pos() - 10 * Math.sin(-rotationRequired)));
-                setY_pos((int) (getY_pos() - 10 * Math.cos(-rotationRequired)));
+                if(!aBoolean){
+                    aBoolean=true;
+                }
+                setX_pos((int) (getX_pos() - 12 * Math.sin(-rotationRequired)));
+                setY_pos((int) (getY_pos() - 12 * Math.cos(-rotationRequired)));
                 break;
             default:
         }

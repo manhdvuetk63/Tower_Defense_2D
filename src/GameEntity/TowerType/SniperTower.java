@@ -3,12 +3,14 @@ package GameEntity.TowerType;
 
 import GameEntity.Bullet.Bullet;
 import GameEntity.Bullet.BulletMachine;
+import GameEntity.Bullet.SnipperBullet;
+import Load_res.GameSound;
 
 import java.awt.*;
 
 public class SniperTower extends Tower {
     public SniperTower(int x,int y) {
-        super(1000,80,168,100);
+        super(1500,80,300,3000);
         setName_Entity("Sniper.png");
         setX_pos(x);
         setY_pos(y);
@@ -30,13 +32,15 @@ public class SniperTower extends Tower {
                 setStt(4);
             }
 
-            Bullet b=new BulletMachine(speed,damege,stt,this);
+            Bullet b=new SnipperBullet(speed,damege,stt,this);
             b.setX_pos(getX_pos());
             b.setY_pos(getY_pos());
             b.setRotationRequired(rotationRequired);
             b.setEnemy_pos(enemy_pos);
+            b.setTower(this);
             bullet.add(b);
-            setTimeAttack(10);
+            setTimeAttack(80);
+            GameSound.play(GameSound.fire3);
         }
 
     }

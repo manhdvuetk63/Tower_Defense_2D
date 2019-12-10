@@ -1,6 +1,8 @@
 package State;
 
 import Game.GameField;
+import Game.GameStage;
+import Load_res.GameSound;
 import Load_res.UILoader;
 
 import java.awt.*;
@@ -54,12 +56,16 @@ public class StateMenu extends StatesOfGame {
                 UILoader.isLoadGameButton = true;
                 UILoader.isNewGameButton = false;
                 UILoader.isQuitButton = false;
+                GameSound.stop();
+//                this.gameField.stateGame.hasSound=true;
                 this.gameField.loadGame();
                 this.gameField.startGame();
             } else if (e.getY() >= 32 * 9 && e.getY() <= 32 * 9 + 64) {
                 UILoader.isNewGameButton = true;
                 UILoader.isLoadGameButton = false;
                 UILoader.isQuitButton = false;
+                GameSound.stop();
+    //            this.gameField.stateGame.hasSound=true;
                 this.gameField.loadGame();
                 this.gameField.startGame();
             } else if (e.getY() >= 32 * 12 && e.getY() <= 32 * 12 + 64) {
@@ -69,6 +75,15 @@ public class StateMenu extends StatesOfGame {
                 this.gameField.running = false;
                 this.gameField.startGame();
             }
+        }
+    }
+
+    @Override
+    public void playSFX() {
+        if (hasSound){
+          //  GameSound.stop();
+            GameSound.play(GameSound.intro);
+            hasSound=false;
         }
     }
 }

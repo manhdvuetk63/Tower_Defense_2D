@@ -1,6 +1,7 @@
 package GameEntity.EnemyType;
 
 import Game.GameField;
+import Load_res.GameSound;
 import Player.User;
 
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class ListEnemy {
     public List<Enemy> enemyList=new ArrayList<>();
-    int timeBorn=300;
+    int timeBorn=10;
     int count=0;
     int type_Ememy;
     int[] wave;
@@ -21,7 +22,7 @@ public class ListEnemy {
     boolean nextWave=false;
     boolean endGame=false;
     public ListEnemy(){
-        wave=new int[1000];
+        wave=new int[10000];
         File file=new File("res/datagame/wave.txt");
         try {
             Scanner sc=new Scanner(file);
@@ -46,6 +47,7 @@ public class ListEnemy {
                     user.player.money += enemyList.get(i).coin;
                     getCount++;
                     enemyList.remove(i);
+                    GameSound.play(GameSound.enemyDie);
                 }
             }
         }
@@ -55,13 +57,14 @@ public class ListEnemy {
                     user.player.health -= 200;
                     getCount++;
                     enemyList.remove(i);
+                    GameSound.play(GameSound.over);
                 }
             }
         }
     }
     public boolean isNewEnermy(){
         if(timeBorn--==0){
-            timeBorn=100;
+            timeBorn=70;
             return true;
         }
         return false;
@@ -73,10 +76,11 @@ public class ListEnemy {
             nextWave=false;
         }
         for (Enemy enemy:this.enemyList){
+
             enemy.draw(g);
         }
     }
-    public Enemy ramdomEnemy(){
+    public  Enemy ramdomEnemy(){
         setType_Ememy(wave[count++]);
         if(getType_Ememy()==0) return new SmallerEnemy();
         else if(getType_Ememy()==1) return new NormalEnemy();

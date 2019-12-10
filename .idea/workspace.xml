@@ -105,7 +105,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.GameStage (1)">
-    <configuration name="GameStage (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="GameStage (1)" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Game.GameStage" />
       <module name="Tower_Defense_2D" />
       <extension name="coverage">
@@ -153,7 +153,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GameStage (1)" />
         <item itemvalue="Application.GameStage" />
         <item itemvalue="Application.Map" />
         <item itemvalue="Application.Main" />
@@ -195,7 +194,9 @@
       <workItem from="1575436145559" duration="1657000" />
       <workItem from="1575438238778" duration="3830000" />
       <workItem from="1575695155903" duration="23207000" />
-      <workItem from="1575782490376" duration="24164000" />
+      <workItem from="1575782490376" duration="24310000" />
+      <workItem from="1575881545993" duration="1904000" />
+      <workItem from="1575905072244" duration="28346000" />
     </task>
     <servers />
   </component>
@@ -223,7 +224,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Player/User.java</url>
-          <line>46</line>
+          <line>54</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

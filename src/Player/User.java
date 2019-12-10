@@ -5,42 +5,50 @@ import Game.GameField;
 import javax.swing.*;
 import java.awt.*;
 
-public class User  {
+public class User {
 
     public Player player;
     private GameField screen;
-    int startingMoney=1000;
-    int startingHealth=1000;
+    int startingMoney = 10000;
+    int startingHealth = 1000;
 
-    public User (GameField screen) {
+    public User(GameField screen) {
         this.screen = screen;
         this.screen.scene = 0;
     }
-    public void createPlayer(){
-        player=new Player(this);
+
+    public void createPlayer() {
+        player = new Player(this);
     }
-    public String toString(){
-        return String.valueOf(player.health)+" \n" +String.valueOf(player.money);
+
+    public String toString() {
+        return String.valueOf(player.health) + " \n" + String.valueOf(player.money);
     }
-    public int getHp(){
+
+    public int getHp() {
         return player.health;
     }
-    public int getMoney(){
+
+    public int getMoney() {
         return player.money;
     }
-    public void draw(Graphics2D g){
-        Toolkit t=Toolkit.getDefaultToolkit();
-        Image image=t.getImage("res/img/coin.png");
-        Image image1=t.getImage("res/img/like.png");
-        Font font=new Font("Monaco",Font.BOLD,28);
+
+    public void draw(Graphics2D g) {
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Image img = t.getImage("res/img/dollar.png");
+        Image image = t.getImage("res/img/coin.png");
+        Image image1 = t.getImage("res/img/like.png");
+        Font font = new Font("Monaco", Font.BOLD, 28);
         g.setFont(font);
         //g.drawString(user.toString(), 32 * 25, 32 * 10);
         g.setColor(Color.yellow);
-        g.drawString(String.valueOf(player.money),32*25-5,32*11-6);
-        g.drawImage(image,32*27,32*10,32,32,null);
+        g.drawImage(img, 32 * 24, 32 * 7, 32, 32, null);
+        g.drawString("SELL", 32 * 26 - 5, 32 * 8 - 6);
+        g.drawString(String.valueOf(player.money), 32 * 25 - 5, 32 * 11 - 6);
+        g.drawImage(image, 32 * 27, 32 * 10, 32, 32, null);
         g.setColor(Color.RED);
-        g.drawString(String.valueOf(player.health),32*25-5,32*13-6);
-        g.drawImage(image1,27*32,32*12,32,32,null);
+        g.drawString(String.valueOf(player.health), 32 * 25 - 5, 32 * 13 - 6);
+        g.drawImage(image1, 27 * 32, 32 * 12, 32, 32, null);
 
 
     }

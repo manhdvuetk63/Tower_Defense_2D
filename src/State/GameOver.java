@@ -1,6 +1,7 @@
 package State;
 
 import Game.GameField;
+import Load_res.GameSound;
 import Load_res.UILoader;
 
 import java.awt.*;
@@ -11,6 +12,7 @@ public class GameOver extends StatesOfGame {
 
     public GameOver(GameField gameField) {
         super(gameField);
+
     }
 
     public void draw(Graphics2D g2d) {
@@ -67,9 +69,18 @@ public class GameOver extends StatesOfGame {
                 UILoader.isLoadGameButton = false;
                 UILoader.isNewGameButton = false;
                 this.gameField.running = false;
-                this.gameField.startGame();
             }
         }
+    }
+
+    @Override
+    public void playSFX() {
+        if (hasSound) {
+            GameSound.stop();
+            GameSound.play(GameSound.gameOverSound);
+            hasSound=false;
+        }
+
     }
 }
 

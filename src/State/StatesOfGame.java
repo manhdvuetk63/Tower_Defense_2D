@@ -2,19 +2,24 @@ package State;
 
 
 import Game.GameField;
+import Load_res.GameSound;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public abstract class StatesOfGame {
     GameField gameField;
+    GameSound gameSoundbg;
     protected MouseEvent e;
     protected int x_pos;
     protected int y_pos;
     protected int stt;
+    protected boolean hasSound;
 
     public StatesOfGame(GameField gameField){
+        gameSoundbg=new GameSound();
         this.gameField=gameField;
+        hasSound=true;
     }
     public MouseEvent getE() {
         return e;
@@ -37,4 +42,5 @@ public abstract class StatesOfGame {
     public abstract void draw(Graphics2D g);
 
     public abstract void mousePressed(MouseEvent e);
+    public abstract void playSFX();
 }

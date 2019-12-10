@@ -1,6 +1,7 @@
 package State;
 
 import Game.GameField;
+import Load_res.GameSound;
 import Load_res.UILoader;
 
 import java.awt.*;
@@ -11,6 +12,7 @@ public class PauseState extends StatesOfGame {
 
     public PauseState(GameField gameField) {
         super(gameField);
+
     }
 
     public void draw(Graphics2D g2d) {
@@ -56,12 +58,15 @@ public class PauseState extends StatesOfGame {
                 UILoader.isResumeButton = true;
                 UILoader.isMenuButton = false;
                 UILoader.isQuitButton = false;
+                GameSound.stop();
                this.gameField.scene=1;
                 System.out.println("ok1");
             } else if (e.getY() >= 32 * 9 && e.getY() <= 32 * 9 + 64) {
                 UILoader.isMenuButton = true;
                 UILoader.isResumeButton = false;
                 UILoader.isQuitButton = false;
+                GameSound.stop();
+                GameSound.play(GameSound.intro);
                 this.gameField.loadMenu();
                 this.gameField.scene=0;
                 System.out.println("ok2");
@@ -72,6 +77,15 @@ public class PauseState extends StatesOfGame {
                 this.gameField.running = false;
                 this.gameField.startGame();
             }
+        }
+    }
+
+    @Override
+    public void playSFX() {
+        if (hasSound) {
+           // GameSound.stop();
+            GameSound.play(GameSound.winSound);
+            hasSound=false;
         }
     }
 }

@@ -55,11 +55,15 @@ public class Map {
         Image i2=t.getImage("res/img/112.png");
         Image i3=t.getImage("res/img/113.png");
         Image i4=t.getImage("res/img/111.png");
+        Image i5=t.getImage("res/img/moutain.png");
+        Image i6=t.getImage("res/img/moutain2.png");
+        Image i7=t.getImage("res/img/plant.png");
         g.drawImage(i1,4*32,8*32,null);
         g.drawImage(i1,10*32,8*32,32,32,null);
         g.drawImage(i4,14*32,2*32,32,32,null);
         g.drawImage(i3,14*32,4*32,32,32,null);
         g.drawImage(i2,13*32,2*32,null);
+        g.drawImage(i5,12*32,5*32,64,64,null);
         g.drawImage(UILoader.pauseButton,32*25,13*32,32*2,32,null);
     }
 

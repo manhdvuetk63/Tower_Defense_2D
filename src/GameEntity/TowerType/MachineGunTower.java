@@ -3,6 +3,7 @@ package GameEntity.TowerType;
 
 import GameEntity.Bullet.Bullet;
 import GameEntity.Bullet.BulletMachine;
+import Load_res.GameSound;
 
 import java.awt.*;
 import java.io.IOException;
@@ -11,7 +12,7 @@ public class MachineGunTower extends Tower {
 
 
     public MachineGunTower(int x,int y) {
-        super(1000,200,32*5,600);
+        super(1200,200,100,600);
         setName_Entity("Machine.png");
         setX_pos(x);
         setY_pos(y);
@@ -36,8 +37,10 @@ public class MachineGunTower extends Tower {
             b.setY_pos(getY_pos());
             b.setRotationRequired(rotationRequired);
             b.setEnemy_pos(enemy_pos);
+            b.setTower(this);
             bullet.add(b);
             setTimeAttack(10);
+            GameSound.play(GameSound.fire2);
         }
 
     }

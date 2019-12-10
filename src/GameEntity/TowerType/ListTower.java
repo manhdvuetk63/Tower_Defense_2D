@@ -16,7 +16,16 @@ public class ListTower {
     public static final int SNIPER = 206;
     int typeTower;
     public int hand = 0;
-
+    int[][] towerInMap;
+    int number=1;
+    public ListTower(){
+        towerInMap=new int[17][31];
+        for (int i=0; i<17;i++){
+            for (int j=0;j<31;j++){
+                towerInMap[i][j]=0;
+            }
+        }
+    }
     public void add(int x_pos, int y_pos, User user) {
         Tower t = null;
         if (typeTower == NORMAL) {
@@ -29,11 +38,26 @@ public class ListTower {
         if (user.player.money >= t.cost) {
             listTowersToAttack.add(t);
             user.player.money -= t.cost;
+            towerInMap[y_pos][x_pos]=number++;
         } else hand = 0;
     }
 
-    public void sellTower(int i) {
-        listTowersToAttack.remove(i);
+    public void sellTower(int x_pos,int y_pos,User user) {
+        if (towerInMap[y_pos][x_pos]!=0) {
+            user.player.money +=listTowersToAttack.get(towerInMap[y_pos][x_pos]-1).cost/2;
+            listTowersToAttack.remove(towerInMap[y_pos][x_pos]-1);
+            for (int i=0;i<17;i++){
+                for (int j=0;j<31;j++) {
+                    if (towerInMap[i][j] > towerInMap[y_pos][x_pos]) {
+                        towerInMap[y_pos][x_pos] = towerInMap[y_pos][x_pos] - 1;
+                    }
+                }
+            }
+            number--;
+            towerInMap[y_pos][x_pos]=0;
+            System.out.println(number);
+        }
+        hand=0;
     }
 
     public void createTower(GameField gameField) {
@@ -45,15 +69,25 @@ public class ListTower {
     }
 
     public void drawTower(Graphics2D g, GameField gameField) {
+        Toolkit tk=Toolkit.getDefaultToolkit();
+        Image image=tk.getImage("res/img/coin.png");
+        Image image1=tk.getImage("res/img/damage.png");
+        Image image2=tk.getImage("res/img/range.png");
         g.setColor(Color.yellow);
         g.setFont(new Font("NewellsHand", Font.PLAIN, 18));
         for (Tower t : listTowersInShop) {
             t.draw(g);
             g.drawString(String.valueOf(t.cost), t.getX_pos() + 48, t.getY_pos() + 16);
+            g.drawImage(image,t.getX_pos()+64,t.getY_pos()+32,20,20,null);
+            g.drawString(String.valueOf(t.range),t.getX_pos()+48+48,t.getY_pos()+16);
+            g.drawImage(image2,t.getX_pos()+64+48,t.getY_pos()+32,20,20,null);
+            g.drawString(String.valueOf(t.damege),t.getX_pos()+48+48+48,t.getY_pos()+16);
+            g.drawImage(image1,t.getX_pos()+64+48+48,t.getY_pos()+32,20,20,null);
         }
         if (!listTowersToAttack.isEmpty()) {
             for (Tower t : listTowersToAttack) {
                 t.draw(g);
+                g.drawOval(t.getX_pos()+16-t.range/2,t.getY_pos()+16-t.range/2,t.range,t.range);
             }
         }
     }

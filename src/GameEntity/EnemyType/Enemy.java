@@ -22,8 +22,7 @@ public class Enemy extends GameEntity implements Comparable<Enemy> {
     int coin;
     int stt;
     boolean bleed=false;
-
-
+    ListEnemy enemy;
     public boolean isBleed() {
         return bleed;
     }
@@ -40,8 +39,16 @@ public class Enemy extends GameEntity implements Comparable<Enemy> {
         return HP;
     }
 
-    public void setHP(int HP) {
-        this.HP = HP;
+    public int getHP_const() {
+        return HP_const;
+    }
+
+    public void setHP_const(int HP_const) {
+        this.HP_const = HP_const;
+    }
+
+    public void setHP() {
+        this.HP = HP_const;
     }
 
     public int getSpeed() {
@@ -70,11 +77,11 @@ public class Enemy extends GameEntity implements Comparable<Enemy> {
 
 
     public Enemy(int HP, int speed, int def, int coin) {
-        this.HP = HP;
+        this.HP_const = HP;
         this.speed = speed;
         this.def = def;
         this.coin = coin;
-        this.HP_const=HP;
+        this.HP=HP;
         this.width=32;
         this.height=32;
         setX_pos(road.getListPoint()[0].x);

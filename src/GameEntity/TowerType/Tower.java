@@ -77,14 +77,15 @@ public abstract class Tower extends GameEntity {
         Image img = t.getImage("res/img/" + this.getName_Entity());
         Image image=t.getImage("res/img/underTower.png");
         g.drawImage(image,getX_pos()-8,getY_pos()-8,48,48,null);
-        g.rotate(rotationRequired, getPoint().x, getPoint().y);
-        g.drawImage(img, getX_pos(), getY_pos(), null);
-        g.rotate(-rotationRequired, getPoint().x, getPoint().y);
         if (!bullet.isEmpty()) {
             for (Bullet b : bullet) {
                 b.draw(g);
+            }
         }
-        }
+        g.rotate(rotationRequired, getPoint().x, getPoint().y);
+        g.drawImage(img, getX_pos(), getY_pos(), null);
+        g.rotate(-rotationRequired, getPoint().x, getPoint().y);
+
         if (!bullet.isEmpty()) {
             for (int i=0;i<bullet.size();i++) {
                 if (bullet.get(i).destroy()) bullet.remove(i);
